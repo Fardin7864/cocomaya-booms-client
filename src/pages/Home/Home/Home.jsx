@@ -6,6 +6,8 @@ import Numberbanner from '../NumberBanner/Numberbanner';
 import Recommanded from '../Recommand/Recommanded';
 import MainSlider from '../Slider/MainSlider';
 import { Helmet } from 'react-helmet';
+import Testimonial from '../Testimonial/Testimonial';
+import FromManue from '../FromMenu/FromManue';
 
 const Home = () => {
     return (
@@ -25,7 +27,9 @@ const Home = () => {
             <Numberbanner></Numberbanner>
             <SerctionTitle subTitle="Should Try" title="CHEF RECOMMENDS"></SerctionTitle> 
             <Recommanded></Recommanded>
-            <SerctionTitle subTitle="What Our Clients Say" title="TESTIMONIALS"></SerctionTitle>       
+            <SerctionTitle subTitle="What Our Clients Say" title="TESTIMONIALS"></SerctionTitle>
+            <FromManue></FromManue>
+            <Testimonial></Testimonial>
         </div>
     );
 };
