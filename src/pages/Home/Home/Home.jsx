@@ -2,6 +2,8 @@ import ManueList from '../../../common/ManueList/ManueList';
 import OrderSlider from '../../../common/OrderSlider/OrderSlider';
 import SerctionTitle from '../../../common/SectionTitle/SerctionTitle';
 import About from '../AboutUs/About';
+import Numberbanner from '../NumberBanner/Numberbanner';
+import Recommanded from '../Recommand/Recommanded';
 import MainSlider from '../Slider/MainSlider';
 import { Helmet } from 'react-helmet';
 
@@ -19,7 +21,11 @@ const Home = () => {
             subTitle="Check It Out"
             title="FROM OUR MENU"
             ></SerctionTitle>
-            <ManueList></ManueList>            
+            <ManueList></ManueList>  
+            <Numberbanner></Numberbanner>
+            <SerctionTitle subTitle="Should Try" title="CHEF RECOMMENDS"></SerctionTitle> 
+            <Recommanded></Recommanded>
+            <SerctionTitle subTitle="What Our Clients Say" title="TESTIMONIALS"></SerctionTitle>       
         </div>
     );
 };
