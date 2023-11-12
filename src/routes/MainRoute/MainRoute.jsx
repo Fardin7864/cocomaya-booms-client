@@ -19,7 +19,7 @@ const MainRoute = createBrowserRouter([
                 element: <Ourmenu></Ourmenu>
             },
             {
-                path: '/foods',
+                path: '/food',
                 element: <Foods></Foods>
             }
         ]

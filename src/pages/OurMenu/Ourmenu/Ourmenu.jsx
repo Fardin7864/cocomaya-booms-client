@@ -31,7 +31,7 @@ const Ourmenu = () => {
       [category]: !prevShows[category],
     }));
   };
-  console.log(category.offered)
+//   console.log(category.offered)
   return (
     <>
       <Pageheader
