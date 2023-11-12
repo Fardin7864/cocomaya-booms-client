@@ -1,8 +1,9 @@
+import ManueList from '../../../common/ManueList/ManueList';
 import OrderSlider from '../../../common/OrderSlider/OrderSlider';
 import SerctionTitle from '../../../common/SectionTitle/SerctionTitle';
+import About from '../AboutUs/About';
 import MainSlider from '../Slider/MainSlider';
 import { Helmet } from 'react-helmet';
-import About from './AboutUs/About';
 
 const Home = () => {
     return (
@@ -13,7 +14,12 @@ const Home = () => {
             <MainSlider></MainSlider>
             <SerctionTitle subTitle="From 11:00am to 10:00pm" title="ORDER ONLINE"></SerctionTitle>
             <OrderSlider></OrderSlider>
-            <About></About>            
+            <About></About>
+            <SerctionTitle
+            subTitle="Check It Out"
+            title="FROM OUR MENU"
+            ></SerctionTitle>
+            <ManueList></ManueList>            
         </div>
     );
 };
