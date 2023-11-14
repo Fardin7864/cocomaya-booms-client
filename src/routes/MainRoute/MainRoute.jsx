@@ -3,6 +3,7 @@ import App from '../../App'
 import Home from "../../pages/Home/Home/Home";
 import Ourmenu from "../../pages/OurMenu/Ourmenu/Ourmenu";
 import Foods from "../../pages/OurFoods/Foods/Foods";
+import Signup from "../../pages/Signup/Signup";
 
 
 const MainRoute = createBrowserRouter([
@@ -21,8 +22,12 @@ const MainRoute = createBrowserRouter([
             {
                 path: '/food',
                 element: <Foods></Foods>
-            }
+            },
         ]
+    },
+    {
+        path: '/signup',
+        element: <Signup></Signup>
     }
 ])
 
