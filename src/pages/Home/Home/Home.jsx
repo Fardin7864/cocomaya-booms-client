@@ -29,8 +29,8 @@ const Home = () => {
             <Numberbanner></Numberbanner>
             <SerctionTitle subTitle="Should Try" title="CHEF RECOMMENDS"></SerctionTitle> 
             <Recommanded></Recommanded>
-            <SerctionTitle subTitle="What Our Clients Say" title="TESTIMONIALS"></SerctionTitle>
             <FromManue></FromManue>
+            <SerctionTitle subTitle="What Our Clients Say" title="TESTIMONIALS"></SerctionTitle>
             <Testimonial></Testimonial>
         </div>
     );

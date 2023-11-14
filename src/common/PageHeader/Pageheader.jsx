@@ -1,7 +1,7 @@
 const Pageheader = ({ img, title, details }) => {
   return (
-    <div
-      className="hero bg-cover min-h-screen mb-20 py-28 px-60"
+<div
+      className="hero bg-cover bg-no-repeat object-cover min-h-screen mb-20 py-28 px-60"
       style={{
         backgroundImage:
           `url('${img}')`,
