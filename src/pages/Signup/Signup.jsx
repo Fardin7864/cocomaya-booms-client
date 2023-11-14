@@ -7,6 +7,7 @@ import {
 import { AuthContext } from "../../providers/Authprovider/Authprovider";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 
 const Signup = () => {
   const { createUser, successToast,errorToast } = useContext(AuthContext);
@@ -14,6 +15,7 @@ const Signup = () => {
   useEffect(() => {
     loadCaptchaEnginge(6);
   }, []);
+
   const handlreCapchaValidation = (e) => { 
     const user_chaptcha = e.target.value;
     if(validateCaptcha(user_chaptcha) == true){
@@ -22,6 +24,7 @@ const Signup = () => {
         setdisable(true)
     }
    }
+
   const {
     register,
     handleSubmit,
@@ -65,7 +68,8 @@ const Signup = () => {
           <input
             type="text"
             name="name"
-            className="form-input mt-1 block w-full border bg-gray-100 rounded-lg h-12"
+            placeholder="Name"
+            className="form-input mt-1 block w-full border bg-gray-100 rounded-lg text-lg pl-3 py-2"
             {...register("name", { required: true })}
           />
           {errors.name && (
@@ -77,8 +81,9 @@ const Signup = () => {
           <input
             type="email"
             name="email"
+            placeholder="Email"
             {...register("email", { required: true })}
-            className="form-input mt-1 block w-full border bg-gray-100 rounded-lg h-12"
+            className="form-input mt-1 block w-full border bg-gray-100 rounded-lg text-lg pl-3 py-2"
           />
           {errors.email && (
             <span className=" text-xs text-red-600">Email required</span>
@@ -89,6 +94,7 @@ const Signup = () => {
           <input
             type="password"
             name="password"
+            placeholder="Password"
             {...register("password", {
               required: true,
               minLength: 6,
@@ -96,7 +102,7 @@ const Signup = () => {
               pattern:
                 /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()-_=+{};:'",.<>/?[\]`|])[^ ]{8,}$/,
             })}
-            className="form-input mt-1 block w-full border bg-gray-100 rounded-lg h-12"
+            className="form-input mt-1 block w-full border bg-gray-100 rounded-lg text-lg pl-3 py-2"
           />
           {errors.password?.type === "required" && (
             <span className=" text-red-600">Password required.</span>
@@ -132,7 +138,7 @@ const Signup = () => {
             type="text"
             name="chaptcha"
             onBlur={handlreCapchaValidation}
-            className="form-input mt-1 block w-full border bg-gray-100 rounded-lg h-12"
+            className="form-input mt-1 block w-full border bg-gray-100 rounded-lg text-lg pl-3 py-2"
           />
         </label>
         <button
@@ -142,8 +148,10 @@ const Signup = () => {
         >
           Sign Up
         </button>
+        <p>Already have account ? <Link className=" text-blue-600" to="/login">Log In</Link></p>
       </form>
-    </div></>
+    </div>
+    </>
   );
 };
 

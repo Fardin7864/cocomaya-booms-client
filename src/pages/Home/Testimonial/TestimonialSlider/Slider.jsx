@@ -14,7 +14,6 @@ const Slider = () => {
         axios.get('/reviews.json')
         .then(res => setReviews(res.data))
      },[])
-     console.log(reviews)
     return (
         <Swiper navigation={true} modules={[Navigation]} className="mySwiper my-24">
         {
