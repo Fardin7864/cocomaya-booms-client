@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../providers/Authprovider/Authprovider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AwesomeButton } from "react-awesome-button";
 
 const Login = () => {
     const {login, socialLogin, successToast, errorToast} = useContext(AuthContext);
@@ -14,7 +15,7 @@ const Login = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    console.log(data)
+    // console.log(data)
     login(data.email, data.password)
     .then((res) => {
         console.log(res)
@@ -26,6 +27,15 @@ const Login = () => {
         errorToast(err.message)
     })
 };
+
+const handleGoogle = () => { 
+    socialLogin()
+    .then(() => { 
+        successToast("Log In successfully!")
+        navigate(localtion?.state ? localtion.state : '/');
+     })
+    .catch(err => errorToast(err.message.splite(".")[1]))
+ }
 
   return (
     <>
@@ -80,7 +90,11 @@ const Login = () => {
             Log In
           </button>
           <p>Don't have account ? <Link className=" text-blue-600" to="/signup">Sign Up</Link></p>
+          <hr />
         </form>
+          {/* <AwesomeButton onPress={handleGoogle} type="primary" /> */}
+          <button onClick={handleGoogle}>Google</button>
+
       </div>
     </>
   );

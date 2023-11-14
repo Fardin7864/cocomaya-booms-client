@@ -20,7 +20,7 @@ const createUser = (email, password) => {
  //sign in with popup
  const socialLogin = () => { 
     setloading(true);
-    return signInWithPopup(auth);
+   return signInWithPopup(auth,google);
   }
 
 //Login with email and password 
@@ -32,7 +32,8 @@ const login = (email,password) => {
  //signOut 
  const logOut = () => { 
     setloading(true);
-    return signOut(auth);
+     signOut(auth)
+     successToast("Log Out Successfully!")
   }
 
  //set user observer
