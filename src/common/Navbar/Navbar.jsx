@@ -1,13 +1,22 @@
-import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { AuthContext } from "../../providers/Authprovider/Authprovider";
 import { IoCartOutline } from "react-icons/io5";
+import useAuth from "../../hooks/useAuth/useAuth";
+import { useQuery } from "@tanstack/react-query";
+import useAxios from "../../hooks/useAxios/useAxios";
+import useCart from "../../hooks/useCart/useCart";
 
 const Navbar = () => {
-const {user, logOut} = useContext(AuthContext)
-
+const {user, logOut} = useAuth();
+const {cart} = useCart();
+// console.log(cart)
+// const axios = useAxios();
+// const {refetch,data: cart} = useQuery({
+//     queryKey: ['cart', user?.email],
+//     queryFn: () => axios.get(`/cart`)
+     
+// })
+console.log(cart.data)
 const userName = user?.displayName ? user.displayName : user?.email.split("@")[0]
-    // const{data}
   const navLinks = 
     <>
     <li><NavLink to={'/'}>Home</NavLink></li>
@@ -15,7 +24,7 @@ const userName = user?.displayName ? user.displayName : user?.email.split("@")[0
     <li><NavLink to={'/desboard'}>DashBoard</NavLink></li>
     <li><NavLink to={'/menu'}>Our Manue</NavLink></li>
     <li><NavLink to={'/food'}>Our Food's</NavLink></li>
-    <li><NavLink to={'/cart'}><IoCartOutline className=" text-2xl"/>{}</NavLink></li>
+    <li><NavLink to={'/cart'} className=" flex items-center gap-0"><IoCartOutline className=" text-2xl"/><span className=" bg-pink-500 text-white px-3 text-[10px] rounded-full">{cart?.data?.length}</span></NavLink></li>
     <li><h2>{userName}</h2></li>
     </>
 
