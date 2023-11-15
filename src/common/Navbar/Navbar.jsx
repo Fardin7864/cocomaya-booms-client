@@ -1,12 +1,13 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../providers/Authprovider/Authprovider";
+import { IoCartOutline } from "react-icons/io5";
 
 const Navbar = () => {
-  const {user, logOut} = useContext(AuthContext)
+const {user, logOut} = useContext(AuthContext)
 
 const userName = user?.displayName ? user.displayName : user?.email.split("@")[0]
-    
+    // const{data}
   const navLinks = 
     <>
     <li><NavLink to={'/'}>Home</NavLink></li>
@@ -14,7 +15,8 @@ const userName = user?.displayName ? user.displayName : user?.email.split("@")[0
     <li><NavLink to={'/desboard'}>DashBoard</NavLink></li>
     <li><NavLink to={'/menu'}>Our Manue</NavLink></li>
     <li><NavLink to={'/food'}>Our Food's</NavLink></li>
-    <li>{userName}</li>
+    <li><NavLink to={'/cart'}><IoCartOutline className=" text-2xl"/>{}</NavLink></li>
+    <li><h2>{userName}</h2></li>
     </>
 
 // console.log(user)

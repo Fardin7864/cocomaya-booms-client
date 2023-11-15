@@ -1,4 +1,8 @@
-const Food = ({ item }) => {
+import { AwesomeButton } from "react-awesome-button";
+import useButtons from "../../../utils/Buttons/Buttons";
+
+const Food = ({item}) => {
+  const {addToCart} = useButtons();
   return (
     <div className="card gap-8 bg-base-100 shadow-xl">
       <figure>
@@ -11,6 +15,9 @@ const Food = ({ item }) => {
       <div className="card-body">
         <h2 className="card-title">{item.name}</h2>
         <p>{item.recipe.slice(0,60)}</p>
+      </div>
+      <div className=" flex justify-center my-5">
+        <button onClick={()=>addToCart(item)}><AwesomeButton type="primary">Add To Cart</AwesomeButton></button>
       </div>
     </div>
   );
