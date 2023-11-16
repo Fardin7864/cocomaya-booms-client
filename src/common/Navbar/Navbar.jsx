@@ -1,21 +1,11 @@
 import { Link, NavLink } from "react-router-dom";
 import { IoCartOutline } from "react-icons/io5";
 import useAuth from "../../hooks/useAuth/useAuth";
-import { useQuery } from "@tanstack/react-query";
-import useAxios from "../../hooks/useAxios/useAxios";
 import useCart from "../../hooks/useCart/useCart";
 
 const Navbar = () => {
 const {user, logOut} = useAuth();
 const {cart} = useCart();
-// console.log(cart)
-// const axios = useAxios();
-// const {refetch,data: cart} = useQuery({
-//     queryKey: ['cart', user?.email],
-//     queryFn: () => axios.get(`/cart`)
-     
-// })
-console.log(cart.data)
 const userName = user?.displayName ? user.displayName : user?.email.split("@")[0]
   const navLinks = 
     <>
