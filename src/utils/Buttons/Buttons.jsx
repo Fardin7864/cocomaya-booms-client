@@ -43,9 +43,10 @@ const addToCart = (food) => {
         confirmButtonText: "Yes, delete it!"
       }).then((result) => {
         if (result.isConfirmed) {
-            axios.delete(`/cart/${food._id}`,food.userEmail)
+            axios.delete(`/cart/${food._id}`,{ data: { userEmail: food.userEmail } })
             .then(res => {
-                if (res.data.deleteCount) {
+                // console.log(res.data.deletedCount)
+                if (res.data.deletedCount) {
                     Swal.fire({
                         title: "Deleted!",
                         text: `${food.name} has been Deleted!`,

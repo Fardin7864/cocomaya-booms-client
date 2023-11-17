@@ -7,9 +7,12 @@ import {
 import { AuthContext } from "../../providers/Authprovider/Authprovider";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useAxiosPublic from "../../hooks/useAxiosPublic/useAxiosPublic";
 
 const Signup = () => {
+  const axioxPublic = useAxiosPublic();
+  const navigate = useNavigate();
   const { createUser, successToast,errorToast } = useContext(AuthContext);
   const [isDisable, setdisable] = useState(true);
   useEffect(() => {
@@ -32,10 +35,22 @@ const Signup = () => {
   } = useForm();
 
   const onSubmit = (data) => {
+    const user = {
+      name: data.name,
+      email: data.email,
+    }
         createUser(data.email, data.password)
         .then(res => {
             if(res.user){
-                successToast("You Loged In successfully!")
+              axioxPublic.post('/users',user)
+              .then(res => {
+                // console.log(res)
+                if (res.data.acknowledged) {
+                    successToast("You Loged In successfully!")
+                    navigate('/')
+                  }
+                })
+                .catch(err => console.log(err))
             }
         })
         .catch(err => {
