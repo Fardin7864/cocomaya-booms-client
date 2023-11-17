@@ -43,7 +43,7 @@ const ManageUsers = () => {
                 <th>{index + 1}</th>
                 <td>{user.name?.toUpperCase()}</td>
                 <td className=" flex items-center">
-                  {user.role.toUpperCase() || "NORMAL"}
+                  {user.role?.toUpperCase() || "NORMAL"}
                   {
                     user.role === "admin" ? 
                     (<button onClick={() => handleRemoveAdmin(user)} className=" text-xs ml-3 btn btn-accent">Remove Admin</button>)
