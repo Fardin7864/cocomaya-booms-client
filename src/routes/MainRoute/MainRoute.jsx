@@ -5,6 +5,8 @@ import Ourmenu from "../../pages/OurMenu/Ourmenu/Ourmenu";
 import Foods from "../../pages/OurFoods/Foods/Foods";
 import Signup from "../../pages/Signup/Signup";
 import Login from "../../pages/Login/Login";
+import Cart from "../../pages/Cart/Cart";
+import Dashboard from "../../pages/Dashboard/Dashboard/Dashboard";
 
 
 const MainRoute = createBrowserRouter([
@@ -24,6 +26,7 @@ const MainRoute = createBrowserRouter([
                 path: '/food',
                 element: <Foods></Foods>
             },
+
         ]
     },
     {
@@ -33,6 +36,16 @@ const MainRoute = createBrowserRouter([
     {
         path: '/login',
         element: <Login></Login>
+    },
+    {
+        path: '/dashboard',
+        element: <Dashboard></Dashboard>,
+        children:[
+            {
+                path: '/dashboard/cart',
+                element: <Cart></Cart>
+            },
+        ]
     }
 ])
 
