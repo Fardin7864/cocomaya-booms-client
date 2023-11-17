@@ -13,7 +13,7 @@ const Cart = () => {
      }
      let totalPrice = 0
       cart?.data?.map(item => (totalPrice+=item.price))
-      console.log(totalPrice)
+      // console.log(totalPrice)
   return (
     <div className="w-full flex flex-col justify-center items-center">
       <Helmet>

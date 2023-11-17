@@ -36,7 +36,7 @@ const Foods = () => {
         title="Our food's"
         details="Would you like to try a dish?"
       ></Pageheader>
-    <Tabs defaultIndex={tabIndex} onSelect={(index) => console.log(index)}>
+    <Tabs defaultIndex={tabIndex}>
       <TabList>
         <Tab>Salad</Tab>
         <Tab>Pizza</Tab>

@@ -17,13 +17,13 @@ const Login = () => {
   const onSubmit = (data) => {
     // console.log(data)
     login(data.email, data.password)
-    .then((res) => {
-        console.log(res)
+    .then(() => {
+        // console.log(res)
         successToast("Log In Successfully!")
         navigate(localtion?.state ? localtion.state : '/');
     })
     .catch(err=> {
-        console.log(err)
+        // console.log(err)
         errorToast(err.message)
     })
 };
