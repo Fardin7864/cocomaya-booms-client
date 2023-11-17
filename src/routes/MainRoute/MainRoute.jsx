@@ -8,6 +8,7 @@ import Login from "../../pages/Login/Login";
 import Cart from "../../pages/Cart/Cart";
 import Dashboard from "../../pages/Dashboard/Dashboard/Dashboard";
 import PrivetRout from "../Privet/PrivetRout";
+import ManageUsers from "../../pages/AdminPages/ManageUsers/ManageUsers";
 
 
 const MainRoute = createBrowserRouter([
@@ -44,8 +45,12 @@ const MainRoute = createBrowserRouter([
         children:[
             {
                 path: '/dashboard/cart',
-                element: <Cart></Cart>
+                element: <PrivetRout><Cart></Cart></PrivetRout>
             },
+            {
+                path: '/dashboard/users',
+                element: <ManageUsers></ManageUsers>
+            }
         ]
     }
 ])
