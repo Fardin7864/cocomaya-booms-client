@@ -1,12 +1,12 @@
-import React, { useContext, useState } from "react";
+import { useContext } from "react";
 import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../providers/Authprovider/Authprovider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { AwesomeButton } from "react-awesome-button";
+import Sociallogin from "../../common/SocialLogin/Sociallogin";
 
 const Login = () => {
-    const {login, socialLogin, successToast, errorToast} = useContext(AuthContext);
+    const {login, successToast, errorToast} = useContext(AuthContext);
     const localtion = useLocation();
     const navigate = useNavigate();
   const {
@@ -27,15 +27,6 @@ const Login = () => {
         errorToast(err.message)
     })
 };
-
-const handleGoogle = () => { 
-    socialLogin()
-    .then(() => { 
-        successToast("Log In successfully!")
-        navigate(localtion?.state ? localtion.state : '/');
-     })
-    .catch(err => errorToast(err.message.splite(".")[1]))
- }
 
   return (
     <>
@@ -89,12 +80,10 @@ const handleGoogle = () => {
           <button type="submit" className="btn btn-primary">
             Log In
           </button>
-          <p>Don't have account ? <Link className=" text-blue-600" to="/signup">Sign Up</Link></p>
+          <p>{"Don't"} have account ? <Link className=" text-blue-600" to="/signup">Sign Up</Link></p>
           <hr />
         </form>
-          {/* <AwesomeButton onPress={handleGoogle} type="primary" /> */}
-          <button onClick={handleGoogle}>Google</button>
-
+        <Sociallogin></Sociallogin>
       </div>
     </>
   );

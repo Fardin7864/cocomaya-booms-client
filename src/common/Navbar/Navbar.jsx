@@ -15,7 +15,7 @@ const userName = user?.displayName ? user.displayName : user?.email.split("@")[0
     <li><NavLink to={'/menu'}>Our Manue</NavLink></li>
     <li><NavLink to={'/food'}>Our {"Food's"}</NavLink></li>
     <li><NavLink to={'/dashboard/cart'} className=" flex items-center gap-0"><IoCartOutline className=" text-2xl"/><span className=" bg-pink-500 text-white px-3 text-[10px] rounded-full">{cart?.data?.length}</span></NavLink></li>
-    <li><h3>{userName.toUpperCase()}</h3></li>
+    <li><h3>{userName?.toUpperCase()}</h3></li>
     </>
 
 // console.log(user)
