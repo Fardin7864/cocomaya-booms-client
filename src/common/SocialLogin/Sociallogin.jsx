@@ -15,11 +15,6 @@ const axiosPublic = useAxiosPublic();
             name: res.user.displayName,
             email: res.user.email,
         }
-        // const jwtEmail = res.user.email;
-        // // console.log(res.user.email)
-        // axiosPublic.post('/jwt',{jwtEmail})
-        // .then(res => console.log(res))
-        // .catch(err => console.log(err))
         axiosPublic.post('/users',userEmail)
         .then(() => {
             navigate(localtion.state? localtion.state : "/")

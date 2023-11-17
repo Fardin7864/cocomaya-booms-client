@@ -13,7 +13,8 @@ const useAxios = () => {
     const navigate = useNavigate();
     const removeUser = () => { 
         signOut(auth)
-        errorToast("Log in please!")
+        // navigate('/login')
+        // errorToast("Log in please!")
      }
     instens.interceptors.response.use(
         (res) => { 
@@ -21,7 +22,7 @@ const useAxios = () => {
          }, (err) => { 
             console.log("err from interceptor", err)
             removeUser();
-            navigate('/')
+            navigate('/login')
           }
     )
     return instens;

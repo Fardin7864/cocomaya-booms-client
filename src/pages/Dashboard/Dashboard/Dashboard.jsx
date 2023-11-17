@@ -13,15 +13,18 @@ import { MdOutlineMenu } from "react-icons/md";
 import { MdShoppingBag } from "react-icons/md";
 import { MdPermContactCalendar } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
+import useAdmin from "../../../hooks/useAdmin/useAdmin";
 
 const Dashboard = () => {
-  const isAdmin = true;
+
+  const {isAdmin} = useAdmin();
+  console.log("is admin: ", isAdmin?.data)
   return (
     <div className=" flex">
       <div className=" bg-orange-400 font-cinzel h-[100vh] w-2/12 flex flex-col justify-center items-center">
         <h3 className=" text-3xl font-semibold text-white">DeshBoard</h3>
         <div className=" my-10">
-          {isAdmin ? (
+          {isAdmin?.data ? (
             <>
               <NavLink className=" flex items-center gap-3 text-xs my-4">
                 <IoMdHome className=" text-2xl" />

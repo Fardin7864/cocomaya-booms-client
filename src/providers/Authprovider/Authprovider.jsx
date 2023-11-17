@@ -44,9 +44,9 @@ const login = (email,password) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
         setloading(true);
         setuser(currentUser)
-        const jwtEmail = currentUser.email;
+        const email = currentUser.email;
         // console.log(res.user.email)
-        axiosPublic.post('/jwt',{jwtEmail})
+        axiosPublic.post('/jwt',{email})
         .then(res => console.log(res))
         .catch(err => console.log(err))
         setloading(false)
