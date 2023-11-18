@@ -20,9 +20,13 @@ const useAxios = () => {
         (res) => { 
             return res;
          }, (err) => { 
-            console.log("err from interceptor", err)
-            removeUser();
-            navigate('/login')
+            // console.log("err from interceptor", err)
+            // console.log(err.response.status)
+            if(err.response.status === 401 || err.response.status === 403){
+                // console.log("logout here!")
+                removeUser();
+                navigate('/login')
+            }
           }
     )
     return instens;

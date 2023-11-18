@@ -44,12 +44,12 @@ const login = (email,password) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
         setloading(true);
         setuser(currentUser)
-        const email = currentUser.email;
+        setloading(false)
+        const email = currentUser?.email;
         // console.log(res.user.email)
         axiosPublic.post('/jwt',{email})
-        .then(res => console.log(res))
+        .then()
         .catch(err => console.log(err))
-        setloading(false)
     })
     return () => { 
         unsubscribe();

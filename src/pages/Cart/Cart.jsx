@@ -2,11 +2,12 @@ import { Helmet } from "react-helmet";
 import SerctionTitle from "../../common/SectionTitle/SerctionTitle";
 import useCart from "../../hooks/useCart/useCart";
 import { MdDelete } from "react-icons/md";
-import useButtons from "../../utils/Buttons/Buttons";
+import useCommonButtons from "../../utils/CommonButtons/useCommonButtons";
+// import useButtons from "../../utils/Buttons/Buttons";
 
 const Cart = () => {
     const {cart, refetch} = useCart();
-    const {deleteCart} = useButtons();
+    const {deleteCart} = useCommonButtons();
     const deleteBtn = (item) => { 
       deleteCart(item)
       refetch()
