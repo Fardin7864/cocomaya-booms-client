@@ -9,6 +9,8 @@ import Cart from "../../pages/Cart/Cart";
 import Dashboard from "../../pages/Dashboard/Dashboard/Dashboard";
 import PrivetRout from "../Privet/PrivetRout";
 import ManageUsers from "../../pages/AdminPages/ManageUsers/ManageUsers";
+import Adminroute from "../AdminRoute/Adminroute";
+import Addmenu from "../../pages/AdminPages/AddMenu/Addmenu";
 
 
 const MainRoute = createBrowserRouter([
@@ -49,7 +51,11 @@ const MainRoute = createBrowserRouter([
             },
             {
                 path: '/dashboard/users',
-                element: <ManageUsers></ManageUsers>
+                element: <Adminroute><ManageUsers></ManageUsers></Adminroute>
+            },
+            {
+                path: '/dashboard/addmenu',
+                element:<Adminroute><Addmenu></Addmenu></Adminroute>
             }
         ]
     }

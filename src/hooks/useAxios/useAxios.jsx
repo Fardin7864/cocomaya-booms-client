@@ -13,19 +13,15 @@ const useAxios = () => {
     const navigate = useNavigate();
     const removeUser = () => { 
         signOut(auth)
-        // navigate('/login')
-        // errorToast("Log in please!")
+        navigate('/login')
+        errorToast("Log in please!")
      }
     instens.interceptors.response.use(
         (res) => { 
             return res;
          }, (err) => { 
-            // console.log("err from interceptor", err)
-            // console.log(err.response.status)
             if(err.response.status === 401 || err.response.status === 403){
-                // console.log("logout here!")
                 removeUser();
-                navigate('/login')
             }
           }
     )

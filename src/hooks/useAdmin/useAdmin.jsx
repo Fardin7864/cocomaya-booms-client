@@ -6,13 +6,13 @@ const useAdmin = () => {
     const {user} = useAuth();
     const axiosSecure = useAxios();
 
-    const {data: isAdmin} = useQuery({
+    const {data: isAdmin, isLoading: isadminLoading} = useQuery({
         queryKey: [user?.email, "isAdminss"],
         queryFn: () => axiosSecure.get(`/users/admin/${user.email}`)
            
     })
 
-    return {isAdmin}
+    return {isAdmin, isadminLoading}
 
 };
 

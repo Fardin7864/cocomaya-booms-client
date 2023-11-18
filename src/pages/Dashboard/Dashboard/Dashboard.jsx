@@ -18,7 +18,7 @@ import useAdmin from "../../../hooks/useAdmin/useAdmin";
 const Dashboard = () => {
 
   const {isAdmin} = useAdmin();
-  console.log("is admin: ", isAdmin?.data)
+  // console.log("is admin: ", isAdmin?.data)
   return (
     <div className=" flex">
       <div className=" bg-orange-400 font-cinzel h-[100vh] w-2/12 flex flex-col justify-center items-center">
