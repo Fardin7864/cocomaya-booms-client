@@ -1,67 +1,13 @@
-import { useContext } from "react";
-import { AuthContext } from "../../providers/Authprovider/Authprovider";
 import useAxios from "../../hooks/useAxios/useAxios";
-import useCart from "../../hooks/useCart/useCart";
 import Swal from 'sweetalert2'
 import useUsers from "../../hooks/useUsers/useUsers";
+import useMenu from "../../hooks/useMenu/useMenu";
 
 const useButtons = () => {
-const {user,successToast} = useContext(AuthContext)
 const axios = useAxios();
-const {refetch} = useCart();
 const {refetch: reloadUser} = useUsers();
+const [loadMenu] = useMenu();
 
-//Add to cart button for database
-// const addToCart = (food) => { 
-//     const cartFood = {
-//         cartId: food._id,
-//         userEmail: user.email,
-//         name: food.name,
-//         recipe: food.recipe,
-//         image: food.image,
-//         category: food.category,
-//         price: food.price,
-//     }
-//     axios.post('/cart', cartFood)
-//     .then((res) => {
-//         if(res.data.insertedId){
-//             successToast(`${food.name} has been Added!`)
-//             refetch()
-//         }
-//     }
-//     )
-//     .catch(err => console.log(err))
-//  }
-//  // Delete from cart 
-//  const deleteCart = (food) => {
-//     Swal.fire({
-//         title: "Are you sure?",
-//         text: "You won't be able to revert this!",
-//         icon: "warning",
-//         showCancelButton: true,
-//         confirmButtonColor: "#3085d6",
-//         cancelButtonColor: "#d33",
-//         confirmButtonText: "Yes, delete it!"
-//       }).then((result) => {
-//         if (result.isConfirmed) {
-//             axios.delete(`/cart/${food._id}`,{ data: { userEmail: food.userEmail } })
-//             .then(res => {
-//                 // console.log(res.data.deletedCount)
-//                 if (res.data.deletedCount) {
-//                     Swal.fire({
-//                         title: "Deleted!",
-//                         text: `${food.name} has been Deleted!`,
-//                         icon: "success"
-//                       });
-//                     refetch();
-//                 }
-//             })
-//             .catch(err => console.log(err))
-
-//         }
-//       });
-
-//   }
 
 //Delete from users list 
 const deleteUser = (user) => { 
@@ -92,7 +38,6 @@ const deleteUser = (user) => {
         }
       });
  }
-
 //Create admin
 const createAdmin = (user) => { 
     Swal.fire({
@@ -151,7 +96,64 @@ const removeAdmin = (user) => {
         }
       });
  }
- return { deleteUser, createAdmin, removeAdmin}
+//Update item
+const updateItem = (item) => { 
+  Swal.fire({
+    title: "Are you sure?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: `Yes, Update!`
+  }).then((result) => {
+    if (result.isConfirmed) {
+        axios.patch(`menu/update/${item._id}`)
+        .then(res => {
+            if (res.data.modifiedCount) {
+                Swal.fire({
+                    title: "Update!",
+                    text: `${item.name} has been updated!`,
+                    icon: "success"
+                  });
+                  loadMenu()
+            }
+        })
+        .catch(err => console.log(err))
+
+    }
+  });
+ }
+
+//Delete item
+const deleteItem = (item) => { 
+  Swal.fire({
+    title: "Are you sure?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: `Yes, Delete!`
+  }).then((result) => {
+    if (result.isConfirmed) {
+        axios.delete(`menu/${item._id}`)
+        .then(res => {
+            if (res.data.modifiedCount) {
+                Swal.fire({
+                    title: "Delete!",
+                    text: `${item.name} has been Deleted!`,
+                    icon: "success"
+                  });
+                  loadMenu()
+            }
+        })
+        .catch(err => console.log(err))
+
+    }
+  });
+ }
+ return { deleteUser, createAdmin, removeAdmin, updateItem, deleteItem}
 };
 
 export default useButtons;

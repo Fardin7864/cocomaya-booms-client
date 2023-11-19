@@ -38,7 +38,7 @@ const Dashboard = () => {
                 ADD ITEMS
               </NavLink>
               <NavLink
-                to="/dashboard/manageItems"
+                to="/dashboard/manageItem"
                 className=" flex items-center gap-3 text-xs my-4"
               >
                 <FaList className=" text-2xl" />

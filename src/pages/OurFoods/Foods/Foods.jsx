@@ -5,11 +5,10 @@ import 'react-tabs/style/react-tabs.css';
 import { useState } from "react";
 import useMenu from "../../../hooks/useMenu/useMenu";
 import { AwesomeButton } from "react-awesome-button";
-import Item from "../../../common/Item/Item";
 import Food from "../Food/Food";
 
 const Foods = () => {
-    const menu = useMenu();
+    const [menu] = useMenu();
     const [tabIndex, settabIndex] = useState(0);
     const [isShow, setisShow] = useState({
       salad: false,

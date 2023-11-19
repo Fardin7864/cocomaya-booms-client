@@ -10,7 +10,7 @@ import About from "../../../common/AboutUs/About";
 
 
 const Ourmenu = () => {
-  const menu = useMenu();
+  const [menu] = useMenu();
   const [isShow, setisShow] = useState({
       offered: false,
       dessert: false,

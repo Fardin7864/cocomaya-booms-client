@@ -11,7 +11,9 @@ import PrivetRout from "../Privet/PrivetRout";
 import ManageUsers from "../../pages/AdminPages/ManageUsers/ManageUsers";
 import Adminroute from "../AdminRoute/Adminroute";
 import Addmenu from "../../pages/AdminPages/AddMenu/Addmenu";
-
+import ManageItem from "../../pages/AdminPages/ManageItem/ManageItem";
+import MenuForm from "../../pages/AdminPages/MenuForm/MenuForm";
+import axios from "axios";
 
 const MainRoute = createBrowserRouter([
     {
@@ -56,6 +58,15 @@ const MainRoute = createBrowserRouter([
             {
                 path: '/dashboard/addmenu',
                 element:<Adminroute><Addmenu></Addmenu></Adminroute>
+            },
+            {
+                path: '/dashboard/manageitem',
+                element:<ManageItem></ManageItem>,
+            },
+            {
+                path: '/dashboard/update/:id',
+                element: <Adminroute><Addmenu></Addmenu></Adminroute>,
+                loader: ({params}) => axios.get(`http://localhost:5000/api/v1/menu/${params.id}`)
             }
         ]
     }

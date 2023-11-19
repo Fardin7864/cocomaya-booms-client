@@ -2,16 +2,18 @@ import { Link, NavLink } from "react-router-dom";
 import { IoCartOutline } from "react-icons/io5";
 import useAuth from "../../hooks/useAuth/useAuth";
 import useCart from "../../hooks/useCart/useCart";
+import useAdmin from "../../hooks/useAdmin/useAdmin";
 
 const Navbar = () => {
 const {user, logOut} = useAuth();
 const {cart} = useCart();
+const {isAdmin} = useAdmin()
 const userName = user?.displayName ? user.displayName : user?.email.split("@")[0]
   const navLinks = 
     <>
     <li><NavLink to={'/'}>Home</NavLink></li>
     <li><NavLink to={'/contact'}>Contact Us</NavLink></li>
-    <li><NavLink to={'/desboard'}>DashBoard</NavLink></li>
+    <li>{user && !isAdmin?.data ?(<NavLink to={'/dashboard/cart'}>DashBoard</NavLink>) : (<NavLink to={'/dashboard/users'}>DashBoard</NavLink>) }</li>
     <li><NavLink to={'/menu'}>Our Manue</NavLink></li>
     <li><NavLink to={'/food'}>Our {"Food's"}</NavLink></li>
     <li><NavLink to={'/dashboard/cart'} className=" flex items-center gap-0"><IoCartOutline className=" text-2xl"/><span className=" bg-pink-500 text-white px-3 text-[10px] rounded-full">{cart?.data?.length}</span></NavLink></li>

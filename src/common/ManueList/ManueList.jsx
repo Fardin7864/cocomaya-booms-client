@@ -5,21 +5,23 @@ import "react-tabs/style/react-tabs.css";
 import Item from "../Item/Item";
 import { AwesomeButton } from "react-awesome-button";
 import "react-awesome-button/dist/styles.css";
+import useMenu from "../../hooks/useMenu/useMenu";
 
 const ManueList = () => {
-  const [tabIndex, settabIndex] = useState(0);
+  const [tabIndex] = useState(0);
   const [isShow, setisShow] = useState({
     salad: false,
     pizza: false,
     soup: false,
     drinks: false,
   });
-  const [menu, setMenu] = useState();
-  useEffect(() => {
-    axios.get("/menu.json").then((res) => {
-      setMenu(res.data);
-    });
-  }, []);
+  // const [menu, setMenu] = useState();
+  // useEffect(() => {
+  //   axios.get("/menu.json").then((res) => {
+  //     setMenu(res.data);
+  //   });
+  // }, []);
+  const [menu] = useMenu();
   const category = {
     salad: menu?.filter((food) => food.category === "salad") || [],
     pizza: menu?.filter((food) => food.category === "pizza") || [],
