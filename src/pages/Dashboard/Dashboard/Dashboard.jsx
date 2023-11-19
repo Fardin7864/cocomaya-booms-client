@@ -31,7 +31,7 @@ const Dashboard = () => {
                 ADMIN HOME
               </NavLink>
               <NavLink
-                to="/dashboard/addItems"
+                to="/dashboard/addmenu"
                 className=" flex items-center gap-3 text-xs my-4"
               >
                 <FaUtensils className=" text-2xl" />

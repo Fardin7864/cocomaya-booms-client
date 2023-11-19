@@ -4,8 +4,10 @@ import MenuForm from "../MenuForm/MenuForm";
 const Addmenu = () => {
     return (
         <>
-        <SerctionTitle subTitle={"Menu Form"} title={"Add to Menu"}></SerctionTitle>
-            <MenuForm></MenuForm>
+        <SerctionTitle 
+        subTitle={"Menu Form"} 
+        title={"Add to Menu"}></SerctionTitle>
+        <MenuForm></MenuForm>
         </>
     );
 };
