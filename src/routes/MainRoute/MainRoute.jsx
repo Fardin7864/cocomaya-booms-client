@@ -13,6 +13,7 @@ import Adminroute from "../AdminRoute/Adminroute";
 import Addmenu from "../../pages/AdminPages/AddMenu/Addmenu";
 import ManageItem from "../../pages/AdminPages/ManageItem/ManageItem";
 import axios from "axios";
+import Payment from "../../pages/Dashboard/Payment/Payment";
 
 const MainRoute = createBrowserRouter([
     {
@@ -46,6 +47,10 @@ const MainRoute = createBrowserRouter([
         path: '/dashboard',
         element: <PrivetRout><Dashboard></Dashboard></PrivetRout> ,
         children:[
+            {
+                path: '/dashboard/payment',
+                element: <Payment></Payment>
+            },
             {
                 path: '/dashboard/cart',
                 element: <PrivetRout><Cart></Cart></PrivetRout>

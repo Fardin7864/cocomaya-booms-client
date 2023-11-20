@@ -3,6 +3,7 @@ import SerctionTitle from "../../common/SectionTitle/SerctionTitle";
 import useCart from "../../hooks/useCart/useCart";
 import { MdDelete } from "react-icons/md";
 import useCommonButtons from "../../utils/CommonButtons/useCommonButtons";
+import { Link } from "react-router-dom";
 // import useButtons from "../../utils/Buttons/Buttons";
 
 const Cart = () => {
@@ -14,7 +15,7 @@ const Cart = () => {
      }
      let totalPrice = 0
       cart?.data?.map(item => (totalPrice+=item.price))
-      // console.log(totalPrice)
+      console.log(totalPrice)
   return (
     <div className="w-full flex flex-col justify-center items-center">
       <Helmet>
@@ -25,7 +26,10 @@ const Cart = () => {
         <div className=" flex justify-between items-center text-2xl font-cinzel px-20 py-10">
           <h2 className=" ">TOTAL ORDERS : {cart?.data?.length}</h2>
           <h2>TOTAL PRICE : ${totalPrice} </h2>
-          <button className=" btn bg-orange-400">PAY</button>
+          {
+            !totalPrice == 0 ? (<Link to="/dashboard/payment" className=" btn bg-orange-400">PAY</Link>) : (<button disabled to="/dashboard/payment" className=" disabled btn bg-orange-400">PAY</button>)
+          }
+          
         </div>
         <div className="overflow-x-auto">
           <table className="table">
