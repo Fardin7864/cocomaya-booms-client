@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import useAxios from "../../../../hooks/useAxios/useAxios";
 import useCart from "../../../../hooks/useCart/useCart";
 import useAuth from "../../../../hooks/useAuth/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const ChackOut = () => {
     const [carError, setCarError] = useState();
@@ -11,16 +12,19 @@ const ChackOut = () => {
     const stripe = useStripe();
     const elements = useElements();
     const axiosSecure = useAxios();
-    const {cart} = useCart();
-    const {user} = useAuth();
+    const {cart,refetch} = useCart();
+    const navigate = useNavigate();
+    const {user, successToast} = useAuth();
     const totalPrice = cart?.data.reduce((total, item) =>total +item.price,0)
 
     useEffect(() => { 
+      if (totalPrice) {
         axiosSecure.post('/create-payment-intent',{price: totalPrice})
         .then(res => {
             console.log(res?.data)
             setclientSecret(res?.data?.clientSecret)
         })
+      }
      },[axiosSecure,totalPrice])
 
   const handleSubmit = async (event) => {
@@ -64,7 +68,26 @@ const ChackOut = () => {
         console.log('payment intent', paymentIntent)
         if (paymentIntent.status === 'succeeded') {
             console.log('transection id', paymentIntent.id)
-            settransectionId(paymentIntent.id)
+            settransectionId(paymentIntent.id);
+
+            const payment = {
+              email: user?.email,
+              name: user?.displayName,
+              transectionId: paymentIntent.id,
+              price: totalPrice,
+              date: new Date(), // uts date , use moment js
+              cartId: cart?.data?.map(item => item._id),
+              menuItemId: cart?.data?.map(item => item.cartId),
+              status: 'pending',
+            }
+
+          const res = await  axiosSecure.post('/payments', payment);
+          console.log('payment saved:', res.data?.deleteResult?.deletedCount)
+          if(res.data?.deleteResult?.deletedCount > 0){
+            refetch();
+            successToast("Successfully completed payment!")
+            navigate('/dashboard/paymentHistory')
+          }
         }
     }
   };

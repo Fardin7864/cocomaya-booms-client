@@ -14,6 +14,7 @@ import Addmenu from "../../pages/AdminPages/AddMenu/Addmenu";
 import ManageItem from "../../pages/AdminPages/ManageItem/ManageItem";
 import axios from "axios";
 import Payment from "../../pages/Dashboard/Payment/Payment";
+import PaymentHistory from "../../pages/Dashboard/PaymentHistory/PaymentHistory";
 
 const MainRoute = createBrowserRouter([
     {
@@ -71,6 +72,10 @@ const MainRoute = createBrowserRouter([
                 path: '/dashboard/update/:id',
                 element: <Adminroute><Addmenu></Addmenu></Adminroute>,
                 loader: ({params}) => axios.get(`http://localhost:5000/api/v1/menu/${params.id}`)
+            },
+            {
+                path: '/dashboard/paymentHistory',
+                element: <PaymentHistory></PaymentHistory>
             }
         ]
     }

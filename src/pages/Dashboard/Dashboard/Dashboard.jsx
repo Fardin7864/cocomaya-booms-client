@@ -14,9 +14,11 @@ import { MdShoppingBag } from "react-icons/md";
 import { MdPermContactCalendar } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../../../hooks/useAdmin/useAdmin";
+import useCart from "../../../hooks/useCart/useCart";
 
 const Dashboard = () => {
 
+  const {cart} = useCart();
   const {isAdmin} = useAdmin();
   // console.log("is admin: ", isAdmin?.data)
   return (
@@ -84,7 +86,7 @@ const Dashboard = () => {
                 className=" flex items-center gap-3 text-xs my-4"
               >
                 <FaShoppingCart className=" text-2xl" />
-                MY CART
+                MY CART ({cart?.data?.length})
               </NavLink>
               <NavLink
                 to="/dashboard/addReview"
